@@ -2,7 +2,6 @@ const sidebar = document.querySelector("#sidebar");
 const pageContent = document.querySelector("#pageContent");
 const overlay = document.querySelector("#sidebarOverlay");
 const openButton = document.querySelector("#openSidebar");
-const closeButton = document.querySelector("#closeSidebar");
 
 const floatingClasses = [
   "left-3",
@@ -45,7 +44,6 @@ function resetOpenButton() {
   setClasses(openButton, openButtonPinnedClasses, false);
   setClasses(openButton, openButtonHomeClasses, true);
   openButton?.classList.remove("hidden", "pointer-events-none");
-  closeButton?.classList.add("hidden", "opacity-0", "pointer-events-none");
 }
 
 function showSidebar() {
@@ -79,7 +77,6 @@ function pinSidebar() {
   setPinnedStyles(true);
   showSidebar();
   pageContent?.classList.add("sm:pl-64");
-  closeButton?.classList.add("hidden", "opacity-0", "pointer-events-none");
   openButton?.classList.remove("hidden");
   openButton?.setAttribute("aria-label", "收合側邊欄");
   setClasses(openButton, openButtonHomeClasses, false);
@@ -100,7 +97,6 @@ openButton?.addEventListener("mouseleave", scheduleHideSidebar);
 openButton?.addEventListener("click", togglePinnedSidebar);
 sidebar?.addEventListener("mouseenter", showSidebar);
 sidebar?.addEventListener("mouseleave", scheduleHideSidebar);
-closeButton?.addEventListener("click", hideSidebar);
 overlay?.addEventListener("click", hideSidebar);
 
 document.addEventListener("keydown", (event) => {
