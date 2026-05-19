@@ -1,17 +1,85 @@
 ---
-
+import "../styles/global.css";
+import sidebarScript from "../scripts/sidebar.js?url";
 ---
 
-<html lang="en">
+<html lang="zh-Hant">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Hsiun Blog</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+
+	<body class="bg-stone-50 text-zinc-950 antialiased">
+		<button
+			id="openSidebar"
+			type="button"
+			class="fixed left-4 top-4 z-[60] flex size-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white shadow-sm shadow-zinc-950/10 transition-[left,top,transform,opacity,box-shadow,background-color,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-zinc-100 hover:shadow-md"
+			aria-label="開啟側邊欄"
+			aria-controls="sidebar"
+			aria-expanded="false"
+		>
+			<span class="h-px w-5 rounded-full bg-zinc-900"></span>
+			<span class="h-px w-5 rounded-full bg-zinc-900"></span>
+			<span class="h-px w-5 rounded-full bg-zinc-900"></span>
+		</button>
+
+		<aside
+			id="sidebar"
+			class="fixed bottom-2 left-3 top-16 z-50 w-60 -translate-x-[calc(100%+1rem)] rounded-2xl border border-zinc-200 bg-white/95 px-4 py-4 shadow-2xl shadow-zinc-950/15 backdrop-blur transition-all duration-300 ease-out"
+			aria-label="側邊欄"
+		>
+			<div class="flex items-center justify-between">
+				<p class="text-lg font-semibold tracking-tight">Hsiun Blog</p>
+				<button
+					id="closeSidebar"
+					type="button"
+					class="pointer-events-none hidden size-10 flex-col items-center justify-center gap-1.5 rounded-lg text-zinc-600 opacity-0 transition hover:bg-zinc-100 hover:text-zinc-950"
+					aria-label="收合側邊欄"
+				>
+					<span class="h-px w-5 rounded-full bg-current"></span>
+					<span class="h-px w-5 rounded-full bg-current"></span>
+					<span class="h-px w-5 rounded-full bg-current"></span>
+				</button>
+			</div>
+
+			<nav class="mt-8 space-y-2" aria-label="側邊導覽">
+				<a
+					href="/"
+					class="block rounded-lg bg-zinc-950 px-4 py-3 text-sm font-medium text-white"
+				>
+					首頁
+				</a>
+				<a
+					href="/blog"
+					class="block rounded-lg px-4 py-3 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950"
+				>
+					文章
+				</a>
+			</nav>
+		</aside>
+
+		<div
+			id="sidebarOverlay"
+			class="fixed inset-0 z-40 hidden bg-zinc-950/30 sm:hidden"
+			aria-hidden="true"
+		>
+		</div>
+
+		<main
+			id="pageContent"
+			class="min-h-screen transition-[padding-left] duration-300"
+		>
+			<section
+				class="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-5 text-center"
+			>
+				<p class="text-sm font-medium text-zinc-500">首頁內容區</p>
+			</section>
+		</main>
+
+		<script type="module" src={sidebarScript}></script>
 	</body>
 </html>
