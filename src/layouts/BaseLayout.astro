@@ -2,6 +2,7 @@
 import Sidebar from "../components/Sidebar.astro";
 import "../styles/global.css";
 import sidebarScript from "../scripts/sidebar.js?url";
+import themeScript from "../scripts/theme.js?url";
 
 interface Props {
 	title?: string;
@@ -17,11 +18,60 @@ const { title = "Hsiun Blog" } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<script is:inline>
+			try {
+				const storedTheme = localStorage.getItem("theme");
+
+				document.documentElement.classList.toggle("dark", storedTheme === "dark");
+			} catch {
+				document.documentElement.classList.remove("dark");
+			}
+		</script>
 		<title>{title}</title>
 	</head>
 
-	<body class="bg-stone-50 text-zinc-950 antialiased">
+	<body class="bg-stone-50 text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50">
 		<Sidebar />
+
+		<button
+			id="themeToggle"
+			type="button"
+			class="fixed right-4 top-4 z-[60] grid size-10 place-items-center rounded-xl border border-zinc-200 bg-white text-zinc-900 shadow-sm shadow-zinc-950/10 transition hover:-translate-y-0.5 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:shadow-black/20 dark:hover:bg-zinc-800"
+			aria-label="切換到深色模式"
+		>
+			<svg
+				id="themeMoonIcon"
+				class="size-5 dark:hidden"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				aria-hidden="true"
+			>
+				<path
+					d="M21 14.6A8.5 8.5 0 0 1 9.4 3a7.7 7.7 0 1 0 11.6 11.6Z"
+				></path>
+			</svg>
+			<svg
+				id="themeSunIcon"
+				class="hidden size-5 dark:block"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 2v2"></path>
+				<path d="M12 20v2"></path>
+				<path d="m4.93 4.93 1.41 1.41"></path>
+				<path d="m17.66 17.66 1.41 1.41"></path>
+				<path d="M2 12h2"></path>
+				<path d="M20 12h2"></path>
+				<path d="m6.34 17.66-1.41 1.41"></path>
+				<path d="m19.07 4.93-1.41 1.41"></path>
+			</svg>
+		</button>
 
 		<main
 			id="pageContent"
@@ -31,5 +81,6 @@ const { title = "Hsiun Blog" } = Astro.props;
 		</main>
 
 		<script type="module" src={sidebarScript}></script>
+		<script type="module" src={themeScript}></script>
 	</body>
 </html>

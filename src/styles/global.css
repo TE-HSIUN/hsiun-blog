@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 .note-content {
   color: rgb(63 63 70);
@@ -10,7 +11,8 @@
 
 .note-content h1,
 .note-content h2,
-.note-content h3 {
+.note-content h3,
+.note-content h4 {
   color: rgb(9 9 11);
   font-weight: 700;
   line-height: 1.25;
@@ -29,6 +31,11 @@
 .note-content h3 {
   margin-top: 2rem;
   font-size: 1.25rem;
+}
+
+.note-content h4 {
+  margin-top: 1.75rem;
+  font-size: 1.125rem;
 }
 
 .note-content p {
@@ -82,6 +89,10 @@
   font-size: 0.875rem;
 }
 
+.note-content pre span[style*="#6A737D"] {
+  color: rgb(108, 207, 144) !important;
+}
+
 .note-content blockquote {
   border-left: 4px solid rgb(212 212 216);
   padding-left: 1rem;
@@ -118,4 +129,49 @@
   font-size: 0.9em;
   font-weight: 500;
   white-space: nowrap;
+}
+
+.dark .note-content {
+  color: rgb(212 212 216);
+}
+
+.dark .note-content h1,
+.dark .note-content h2,
+.dark .note-content h3,
+.dark .note-content h4 {
+  color: rgb(250 250 250);
+}
+
+.dark .note-content a {
+  color: rgb(244 244 245);
+}
+
+.dark .note-content code {
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.dark .note-content pre {
+  background: rgb(9 9 11);
+  color: rgb(244 244 245);
+}
+
+.dark .note-content blockquote {
+  border-left-color: rgb(82 82 91);
+  color: rgb(161 161 170);
+}
+
+.dark .note-content th,
+.dark .note-content td {
+  border-color: rgb(63 63 70);
+}
+
+.dark .note-content th {
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.dark .note-content :not(pre) > code {
+  background: rgb(39 39 42);
+  color: rgb(244 244 245);
 }

@@ -3,27 +3,28 @@ const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isNotes = pathname.startsWith("/notes");
 
-const activeLinkClass = "block rounded-lg bg-zinc-950 px-4 py-3 text-sm font-medium text-white";
+const activeLinkClass =
+	"block rounded-lg bg-zinc-950 px-4 py-3 text-sm font-medium text-white dark:bg-zinc-50 dark:text-zinc-950";
 const inactiveLinkClass =
-	"block rounded-lg px-4 py-3 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950";
+	"block rounded-lg px-4 py-3 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50";
 ---
 
 <button
 	id="openSidebar"
 	type="button"
-	class="fixed left-4 top-4 z-[60] flex size-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white shadow-sm shadow-zinc-950/10 transition-[left,top,transform,opacity,box-shadow,background-color,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-zinc-100 hover:shadow-md"
+	class="fixed left-4 top-4 z-[60] flex size-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white shadow-sm shadow-zinc-950/10 transition-[left,top,transform,opacity,box-shadow,background-color,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-black/20 dark:hover:bg-zinc-800"
 	aria-label="開啟側邊欄"
 	aria-controls="sidebar"
 	aria-expanded="false"
 >
-	<span class="h-px w-5 rounded-full bg-zinc-900"></span>
-	<span class="h-px w-5 rounded-full bg-zinc-900"></span>
-	<span class="h-px w-5 rounded-full bg-zinc-900"></span>
+	<span class="h-px w-5 rounded-full bg-zinc-900 dark:bg-zinc-100"></span>
+	<span class="h-px w-5 rounded-full bg-zinc-900 dark:bg-zinc-100"></span>
+	<span class="h-px w-5 rounded-full bg-zinc-900 dark:bg-zinc-100"></span>
 </button>
 
 <aside
 	id="sidebar"
-	class="fixed bottom-2 left-3 top-16 z-50 w-60 -translate-x-[calc(100%+1rem)] rounded-2xl border border-zinc-200 bg-white/95 px-4 py-4 shadow-2xl shadow-zinc-950/15 backdrop-blur transition-all duration-300 ease-out"
+	class="fixed bottom-2 left-3 top-16 z-50 w-60 -translate-x-[calc(100%+1rem)] rounded-2xl border border-zinc-200 bg-white/95 px-4 py-4 shadow-2xl shadow-zinc-950/15 backdrop-blur transition-all duration-300 ease-out dark:border-zinc-800 dark:bg-zinc-900/95 dark:shadow-black/30"
 	aria-label="側邊欄"
 >
 	<div class="flex items-center justify-between">
@@ -38,7 +39,7 @@ const inactiveLinkClass =
 
 <div
 	id="sidebarOverlay"
-	class="fixed inset-0 z-40 hidden bg-zinc-950/30 sm:hidden"
+	class="fixed inset-0 z-40 hidden bg-zinc-950/30 sm:hidden dark:bg-black/50"
 	aria-hidden="true"
 >
 </div>

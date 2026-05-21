@@ -19,7 +19,7 @@ const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
 
 <BaseLayout title={`${note.data.title} | Hsiun Blog`}>
 	<article class="mx-auto min-h-screen max-w-4xl px-5 py-20">
-		<a href="/notes" class="text-sm font-medium text-zinc-500 hover:text-zinc-950">
+		<a href="/notes" class="text-sm font-medium text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50">
 			← 回筆記列表
 		</a>
 
@@ -35,18 +35,28 @@ const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
 					)
 				}
 				<span>·</span>
-				<a href={categoryUrl} class="hover:text-zinc-950">{note.data.category}</a>
+				<a href={categoryUrl} class="hover:text-zinc-950 dark:hover:text-zinc-50">{note.data.category}</a>
 			</div>
-			<h1 class="mt-3 text-4xl font-bold tracking-tight text-zinc-950">
+			<h1 class="mt-3 text-4xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
 				{note.data.title}
 			</h1>
-			<p class="mt-4 text-lg leading-8 text-zinc-600">
+			<p class="mt-2 text-sm leading-8 text-zinc-600 dark:text-zinc-400">
 				{note.data.description}
 			</p>
+			{
+				note.data.image && (
+					<img
+						src={note.data.image}
+						alt={note.data.imageAlt ?? note.data.title}
+						class="mt-8 aspect-[16/9] w-full rounded-lg object-cover"
+					/>
+				)
+			}
 		</header>
 
-		<div class="note-content mt-10 text-base leading-8 text-zinc-700">
+		<div class="note-content mt-10 text-base leading-8 text-zinc-700 dark:text-zinc-300">
 			<Content />
 		</div>
+
 	</article>
 </BaseLayout>
