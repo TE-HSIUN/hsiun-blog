@@ -18,12 +18,12 @@ const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
 ---
 
 <BaseLayout title={`${note.data.title} | Hsiun Blog`}>
-	<article class="mx-auto min-h-screen max-w-4xl px-5 py-20">
-		<a href="/notes" class="text-sm font-medium text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50">
+	<article class="mx-auto min-h-screen max-w-5xl px-5 py-20 sm:py-24">
+		<a href="/notes" class="inline-flex rounded-full border border-zinc-200 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-600 backdrop-blur transition hover:-translate-y-0.5 hover:border-zinc-300 hover:text-zinc-950 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:text-zinc-50">
 			← 回筆記列表
 		</a>
 
-		<header class="mt-8">
+		<header class="surface-card mt-8 rounded-3xl p-6 sm:p-10">
 			<div class="flex flex-wrap items-center gap-2 text-sm text-zinc-500">
 				<span>建立 {note.data.pubDate.toLocaleDateString("zh-TW")}</span>
 				{
@@ -37,10 +37,10 @@ const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
 				<span>·</span>
 				<a href={categoryUrl} class="hover:text-zinc-950 dark:hover:text-zinc-50">{note.data.category}</a>
 			</div>
-			<h1 class="mt-3 text-4xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+			<h1 class="mt-4 max-w-3xl text-4xl font-black tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-5xl">
 				{note.data.title}
 			</h1>
-			<p class="mt-2 text-sm leading-8 text-zinc-600 dark:text-zinc-400">
+			<p class="mt-4 max-w-2xl text-base leading-8 text-zinc-600 dark:text-zinc-300">
 				{note.data.description}
 			</p>
 			{
@@ -48,13 +48,13 @@ const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
 					<img
 						src={note.data.image}
 						alt={note.data.imageAlt ?? note.data.title}
-						class="mt-8 aspect-[16/9] w-full rounded-lg object-cover"
+						class="mt-8 aspect-[16/9] w-full rounded-2xl object-cover shadow-2xl shadow-zinc-950/15 dark:shadow-black/35"
 					/>
 				)
 			}
 		</header>
 
-		<div class="note-content mt-10 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+		<div class="note-content mx-auto mt-12 max-w-3xl text-base leading-8 text-zinc-700 dark:text-zinc-300">
 			<Content />
 		</div>
 

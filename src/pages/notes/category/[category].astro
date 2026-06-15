@@ -28,19 +28,22 @@ const categories = getNoteCategories(allNotes);
 ---
 
 <BaseLayout title={`${category.name} 筆記 | Hsiun Blog`}>
-	<section class="mx-auto min-h-screen max-w-4xl px-5 py-20">
+	<section class="mx-auto min-h-screen max-w-5xl px-5 py-20 sm:py-24">
 		<div class="mx-auto max-w-4xl">
-			<p class="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
-				Notes
-			</p>
-			<h1 class="mt-4 text-4xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
-				{category.name}
-			</h1>
+			<div class="surface-card rounded-3xl p-6 sm:p-8">
+				<p class="eyebrow">Notes</p>
+				<h1 class="mt-4 text-4xl font-black tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-5xl">
+					{category.name}
+				</h1>
+				<p class="mt-4 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
+					集中瀏覽這個主題下的文章，沿著同一條學習線索往下讀。
+				</p>
+			</div>
 
 			<nav class="mt-8 flex flex-wrap gap-2" aria-label="筆記分類">
 				<a
 					href="/notes"
-					class="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+					class="pill-link rounded-full px-4 py-2 text-sm font-medium transition"
 				>
 					全部
 				</a>
@@ -50,8 +53,8 @@ const categories = getNoteCategories(allNotes);
 							href={`/notes/category/${item.slug}/`}
 							class={
 								item.slug === category.slug
-									? "rounded-full bg-zinc-950 px-4 py-2 text-sm font-medium text-white dark:bg-zinc-50 dark:text-zinc-950"
-									: "rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+									? "pill-active rounded-full px-4 py-2 text-sm font-semibold"
+									: "pill-link rounded-full px-4 py-2 text-sm font-medium transition"
 							}
 						>
 							{item.name}
@@ -65,7 +68,7 @@ const categories = getNoteCategories(allNotes);
 					notes.map((note) => (
 						<a
 							href={`/notes/${note.id}/`}
-							class="block rounded-xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-zinc-950/10 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:shadow-black/20"
+							class="note-card block rounded-2xl p-5 pl-6 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-zinc-950/10 dark:hover:shadow-black/25"
 						>
 							<p class="text-sm text-zinc-500">
 								{getNoteDisplayDateLabel(note)}{" "}
