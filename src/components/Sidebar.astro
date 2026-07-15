@@ -1,7 +1,11 @@
 ---
+import { withBase } from "../lib/urls";
+
 const pathname = Astro.url.pathname;
-const isHome = pathname === "/";
-const isNotes = pathname.startsWith("/notes");
+const homeUrl = withBase();
+const notesUrl = withBase("notes/");
+const isHome = pathname === homeUrl;
+const isNotes = pathname.startsWith(notesUrl);
 
 const activeLinkClass =
 	"block rounded-lg bg-zinc-950 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-zinc-950/15 dark:bg-zinc-50 dark:text-zinc-950 dark:shadow-black/25";
@@ -28,7 +32,7 @@ const inactiveLinkClass =
 	aria-label="側邊欄"
 >
 	<div class="flex items-center justify-between">
-		<a href="/" class="group flex items-center gap-3">
+		<a href={homeUrl} class="group flex items-center gap-3">
 			<span class="grid size-9 place-items-center rounded-xl bg-zinc-950 text-sm font-bold text-white shadow-lg shadow-zinc-950/15 dark:bg-zinc-50 dark:text-zinc-950 dark:shadow-black/25">
 				H
 			</span>
@@ -40,8 +44,8 @@ const inactiveLinkClass =
 	</div>
 
 	<nav class="mt-8 space-y-2" aria-label="側邊導覽">
-		<a href="/" class={isHome ? activeLinkClass : inactiveLinkClass}>首頁</a>
-		<a href="/notes" class={isNotes ? activeLinkClass : inactiveLinkClass}>筆記</a>
+		<a href={homeUrl} class={isHome ? activeLinkClass : inactiveLinkClass}>首頁</a>
+		<a href={notesUrl} class={isNotes ? activeLinkClass : inactiveLinkClass}>筆記</a>
 	</nav>
 </aside>
 
