@@ -6,11 +6,12 @@ import {
 	getNoteDisplayDateLabel,
 	sortNotesByDate,
 } from "../lib/notes";
+import { withBase } from "../lib/urls";
 
 const notes = sortNotesByDate(await getCollection("notes"));
 const recentNotes = notes.slice(0, 3);
 const currentTopics = [
-	{ name: "JavaScript", href: "/notes/category/javascript/" },
+	{ name: "JavaScript", href: withBase("notes/category/javascript/") },
 ];
 const noteCount = notes.length;
 const topicCount = currentTopics.length;
@@ -30,7 +31,7 @@ const topicCount = currentTopics.length;
 					</p>
 					<div class="mt-8 flex flex-wrap gap-3">
 						<a
-							href="/notes"
+							href={withBase("notes/")}
 							class="inline-flex rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-zinc-950/15 transition hover:-translate-y-0.5 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
 						>
 							查看筆記
@@ -70,7 +71,7 @@ const topicCount = currentTopics.length;
 					</h2>
 				</div>
 				<a
-					href="/notes"
+					href={withBase("notes/")}
 					class="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 sm:inline"
 				>
 					全部筆記
@@ -82,7 +83,7 @@ const topicCount = currentTopics.length;
 					recentNotes.length > 0 ? (
 						recentNotes.map((note) => (
 							<a
-								href={`/notes/${note.id}/`}
+								href={withBase(`notes/${note.id}/`)}
 								class="note-card block rounded-2xl p-5 pl-6 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-zinc-950/10 dark:hover:shadow-black/25"
 							>
 								<div class="flex flex-wrap items-center gap-2 text-sm text-zinc-500">

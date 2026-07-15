@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
 import { getCategorySlug } from "../../lib/notes";
+import { withBase } from "../../lib/urls";
 
 export async function getStaticPaths() {
 	const notes = await getCollection("notes");
@@ -14,12 +15,12 @@ export async function getStaticPaths() {
 
 const { note } = Astro.props;
 const { Content } = await render(note);
-const categoryUrl = `/notes/category/${getCategorySlug(note.data.category)}/`;
+const categoryUrl = withBase(`notes/category/${getCategorySlug(note.data.category)}/`);
 ---
 
 <BaseLayout title={`${note.data.title} | Hsiun Blog`}>
 	<article class="mx-auto min-h-screen max-w-5xl px-5 py-20 sm:py-24">
-		<a href="/notes" class="inline-flex rounded-full border border-zinc-200 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-600 backdrop-blur transition hover:-translate-y-0.5 hover:border-zinc-300 hover:text-zinc-950 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:text-zinc-50">
+		<a href={withBase("notes/")} class="inline-flex rounded-full border border-zinc-200 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-600 backdrop-blur transition hover:-translate-y-0.5 hover:border-zinc-300 hover:text-zinc-950 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:text-zinc-50">
 			← 回筆記列表
 		</a>
 

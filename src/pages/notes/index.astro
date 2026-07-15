@@ -7,6 +7,7 @@ import {
 	getNoteDisplayDateLabel,
 	sortNotesByDate,
 } from "../../lib/notes";
+import { withBase } from "../../lib/urls";
 
 const notes = sortNotesByDate(await getCollection("notes"));
 const categories = getNoteCategories(notes);
@@ -25,7 +26,7 @@ const categories = getNoteCategories(notes);
 
 			<nav class="mt-8 flex flex-wrap gap-2" aria-label="筆記分類">
 				<a
-					href="/notes"
+					href={withBase("notes/")}
 					class="pill-active rounded-full px-4 py-2 text-sm font-semibold"
 				>
 					All Notes
@@ -33,7 +34,7 @@ const categories = getNoteCategories(notes);
 				{
 					categories.map((category) => (
 						<a
-							href={`/notes/category/${category.slug}/`}
+							href={withBase(`notes/category/${category.slug}/`)}
 							class="pill-link rounded-full px-4 py-2 text-sm font-medium transition"
 						>
 							{category.name}
@@ -46,7 +47,7 @@ const categories = getNoteCategories(notes);
 				{
 					notes.map((note) => (
 						<a
-							href={`/notes/${note.id}/`}
+							href={withBase(`notes/${note.id}/`)}
 							class="note-card block rounded-2xl p-5 pl-6 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-zinc-950/10 dark:hover:shadow-black/25"
 						>
 							<div class="flex flex-wrap items-center gap-2 text-sm text-zinc-500">
