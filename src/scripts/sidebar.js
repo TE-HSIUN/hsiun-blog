@@ -58,7 +58,7 @@ function hideSidebar() {
   resetOpenButton();
   setPinnedStyles(false);
   sidebar?.classList.add("-translate-x-[calc(100%+1rem)]");
-  pageContent?.classList.remove("sm:pl-64");
+  pageContent?.classList.remove("sm:ml-60");
   overlay?.classList.add("hidden");
   openButton?.setAttribute("aria-expanded", "false");
   openButton?.setAttribute("aria-label", "開啟側邊欄");
@@ -76,7 +76,7 @@ function pinSidebar() {
   isPinned = true;
   setPinnedStyles(true);
   showSidebar();
-  pageContent?.classList.add("sm:pl-64");
+  pageContent?.classList.add("sm:ml-60");
   openButton?.classList.remove("hidden");
   openButton?.setAttribute("aria-label", "收合側邊欄");
   setClasses(openButton, openButtonHomeClasses, false);

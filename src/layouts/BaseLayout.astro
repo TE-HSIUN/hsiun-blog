@@ -31,7 +31,7 @@ const { title = "Hsiun Blog" } = Astro.props;
 		<title>{title}</title>
 	</head>
 
-	<body class="site-shell bg-stone-50 text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50">
+	<body class="site-shell bg-white text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50">
 		<Sidebar />
 
 		<button
@@ -76,7 +76,7 @@ const { title = "Hsiun Blog" } = Astro.props;
 
 		<main
 			id="pageContent"
-			class="min-h-screen transition-[padding-left] duration-300"
+			class="min-h-screen transition-[margin-left] duration-300"
 		>
 			<slot />
 		</main>

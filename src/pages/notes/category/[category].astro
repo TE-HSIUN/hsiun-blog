@@ -28,25 +28,25 @@ const notes = sortNotesByDate(
 const categories = getNoteCategories(allNotes);
 ---
 
-<BaseLayout title={`${category.name} 筆記 | Hsiun Blog`}>
+<BaseLayout title={`${category.name} 文章 | Hsiun Blog`}>
 	<section class="mx-auto min-h-screen max-w-5xl px-5 py-20 sm:py-24">
 		<div class="mx-auto max-w-4xl">
 			<div class="surface-card rounded-3xl p-6 sm:p-8">
-				<p class="eyebrow">Notes</p>
+				<p class="eyebrow">Articles</p>
 				<h1 class="mt-4 text-4xl font-black tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-5xl">
 					{category.name}
 				</h1>
 				<p class="mt-4 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
-					集中瀏覽這個主題下的文章，沿著同一條學習線索往下讀。
+					瀏覽這個主題下的文章，從軟體開發的觀念、實作到問題排查，逐步建立完整脈絡。
 				</p>
 			</div>
 
-			<nav class="mt-8 flex flex-wrap gap-2" aria-label="筆記分類">
+			<nav class="mt-8 flex flex-wrap gap-2" aria-label="文章分類">
 				<a
 					href={withBase("notes/")}
 					class="pill-link rounded-full px-4 py-2 text-sm font-medium transition"
 				>
-					全部
+					All Articles
 				</a>
 				{
 					categories.map((item) => (
@@ -69,7 +69,7 @@ const categories = getNoteCategories(allNotes);
 					notes.map((note) => (
 						<a
 							href={withBase(`notes/${note.id}/`)}
-							class="note-card block rounded-2xl p-5 pl-6 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-zinc-950/10 dark:hover:shadow-black/25"
+							class="note-card block rounded-2xl p-5 pl-6"
 						>
 							<p class="text-sm text-zinc-500">
 								{getNoteDisplayDateLabel(note)}{" "}
